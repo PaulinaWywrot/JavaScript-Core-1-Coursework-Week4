@@ -15,7 +15,12 @@
   
 */
 
-function getSettlers() {}
+function getSettlers(array) {
+  const filteredArray = array.filter(
+    (item) => item.slice(0, 1) === "A" && item.endsWith("family")
+  );
+  return filteredArray;
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

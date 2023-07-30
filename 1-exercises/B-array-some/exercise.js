@@ -5,13 +5,21 @@
   - Add a check for null values, and if one exists, exit the program
   - Do not edit any of the existing code
 */
-
 let pairsByIndex = [[0, 3], [1, 2], [2, 1], null, [3, 0]];
 
 // If there is a null value in the array exit the program with the error code
 // https://nodejs.org/api/process.html#process_process_exit_code
 // process.exit(1);
-
+let isNull = pairsByIndex.some((indexes) => {
+  if (indexes === null) {
+    return true;
+  } else {
+    return false;
+  }
+});
+if (isNull) {
+  process.exit(1);
+}
 let students = ["Islam", "Lesley", "Harun", "Rukmini"];
 let mentors = ["Daniel", "Irina", "Mozafar", "Luke"];
 

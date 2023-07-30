@@ -20,8 +20,8 @@
 function checkCodeIsThere(stringText) {
   let magicWord = "code";
   //edit code below
-  if (stringText) {
-    return stringText;
+  if (stringText.includes(magicWord)) {
+    return stringText.indexOf(magicWord);
   } else {
     return "Not found";
   }
@@ -64,7 +64,11 @@ function checkCodeIsThere(stringText) {
 
   Hint: Use the corresponding array method to split the array.
 */
-function getTransportModes() {}
+
+function getTransportModes(locationAndTransport) {
+  const transportModes = locationAndTransport.slice(1);
+  return transportModes;
+}
 
 /*
   Implement the function isAccessibleByTransportMode that
@@ -81,7 +85,10 @@ function getTransportModes() {}
 
   Hint: Use the corresponding array method to decide if an element is included in an array.
 */
-function isAccessibleByTransportMode() {}
+function isAccessibleByTransportMode(transportModes, string) {
+  let isLocationAccessible = transportModes.includes(string);
+  return isLocationAccessible;
+}
 
 /*
   Implement the function getLocationName that
@@ -92,7 +99,10 @@ function isAccessibleByTransportMode() {}
    - Returns the name of the location
       e.g: "Tower Bridge"
 */
-function getLocationName() {}
+function getLocationName(locationAndTransport) {
+  let location = locationAndTransport[0];
+  return location;
+}
 
 /*
  We arrived at the final method. it won't take long if you use the previously implemented functions wisely.
@@ -120,9 +130,15 @@ function getLocationName() {}
    - Use array method to manipulate its elements.
 
   Advanced challange: try to use arrow function when invoking an array method.
-*/
+*/ //string
 function journeyPlanner(locations, transportMode) {
-  // Implement the function body
+  //return location that can be accessed by provided transport mode
+  return locations
+    .filter((item) => {
+      const transport = getTransportModes(item);
+      return isAccessibleByTransportMode(transport, transportMode);
+    })
+    .map((item) => getLocationName(item));
 }
 
 /* ======= TESTS - DO NOT MODIFY ===== */
